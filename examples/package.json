@@ -3,11 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --outDir ../examples-build/",
     "basic-v1": "node build/basic-example-v1/index.js",
     "scan-query": "node build/scan-query/index.js",
     "type-utils": "node build/type-utils/index.js",
-    "url-shortener": "node build/url-shortener-example/index.js"
+    "url-shortener": "node build/url-shortener-example/index.js",
+    "run-ydb": "YDB_SDK_LOGLEVEL=\"debug\" SA_JSON_FILE=\"/Users/40in/.ssh/service-account-key-lb-preprod.json\" IAM_ENDPOINT=\"iam.api.cloud-preprod.yandex.net\" YDB_SSL_ROOT_CERTIFICATES_FILE=\"/Users/40in/dev/cloud-events-notify-proxy/YandexInternalRootCA.crt\" node ../examples-build/logbroker --db /pre-prod_ydb_public/aoepam019k1ftomm3f5f/cc803q344u5gggsdqsv3 --endpoint grpcs://ydb.serverless.cloud-preprod.yandex.net:2135",
+    "run": "YDB_SDK_LOGLEVEL=\"debug\" SA_JSON_FILE=\"/Users/40in/.ssh/service-account-key-lb-preprod.json\" IAM_ENDPOINT=\"iam.api.cloud-preprod.yandex.net\" YDB_SSL_ROOT_CERTIFICATES_FILE=\"/Users/40in/dev/cloud-events-notify-proxy/YandexInternalRootCA.crt\" node ../examples-build/logbroker --db /pre-prod_global/aoeb66ftj1tbt1b2eimn/cc8035oc71oh9um52mv3 --endpoint grpcs://lb.cc8035oc71oh9um52mv3.ydb.mdb.cloud-preprod.yandex.net:2135",
+    "build-and-run": "npm run build && npm run run"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.5.1",

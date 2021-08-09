@@ -8,6 +8,7 @@ import getLogger, {Logger} from "./logging";
 import SchemeClient from "./scheme";
 import {Events} from './constants'
 import {ClientOptions} from "./utils";
+import PersqueueClient from './persqueue';
 
 
 export interface DriverSettings {
@@ -22,6 +23,7 @@ export default class Driver {
 
     public tableClient: TableClient;
     public schemeClient: SchemeService;
+    public persqueueClient: PersqueueClient;
 
     constructor(
         private entryPoint: string,
@@ -38,7 +40,9 @@ export default class Driver {
         this.sessionCreators = new Map();
         this.tableClient = new TableClient(this);
         this.schemeClient = new SchemeClient(this);
+        this.persqueueClient = new PersqueueClient(this);
         this.logger = getLogger();
+        this.logger.info('Using custom driver...');
     }
 
     public async ready(timeout: number): Promise<boolean> {

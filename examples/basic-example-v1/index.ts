@@ -9,7 +9,7 @@ import {
     TableDescription,
     withRetries,
     Ydb
-} from 'ydb-sdk';
+} from '../../build';
 import {Episode, getEpisodesData, getSeasonsData, getSeriesData, Series} from './data-helpers';
 import {main, SYNTAX_V1} from '../utils';
 

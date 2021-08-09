@@ -1,4 +1,4 @@
-import {getLogger, Logger} from 'ydb-sdk';
+import {getLogger, Logger} from '../build';
 import yargs from 'yargs';
 
 
@@ -14,7 +14,8 @@ export async function main(runner: Runner) {
 
     const endpoint = args.endpoint as string;
     const db = args.db as string;
-    const logger = getLogger();
+    const logger = getLogger({level: 'trace'});
+    logger.info('Using debug logger level')
     logger.info(`Running basic-example script against endpoint '${endpoint}' and database '${db}'.`);
 
     try {
